@@ -1,0 +1,15 @@
+[Unit]
+Description=Angular.js and Socket.io sample app
+After=docker.service etcd.service
+Requires=docker.service etcd.service
+
+[Service]
+TimeoutStartSec=0
+
+# Build image if theres none.
+ExecStartPre=/bin/sh -c "/usr/bin/docker images | grep angular-websocket || /usr/bin/docker build -t angular-websocket github.com/mfaulk/angular-websocket.git"
+
+# Run or start the container.
+ExecStart=/bin/sh -c "/usr/bin/docker ps -a | grep angular-websocket && /usr/bin/docker start -a angular-websocket || /usr/bin/docker run --name=angular-websocket -p 0.0.0.0:3000:3000 angular-websocket"
+
+ExecStop=/usr/bin/docker stop angular-websocket
