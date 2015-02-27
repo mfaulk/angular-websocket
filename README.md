@@ -1,15 +1,22 @@
-# Angular Socket.IO IM Demo
+# Angular-websocket
 
-A simple instant messaging app to demo the [AngularJS Socket.IO Seed](https://github.com/btford/angular-socket-io-seed). [A walkthrough of writing the application is available on my blog](http://briantford.com/blog/angular-socket-io.html).
+Expands upon the [AngularJS Socket.IO Seed](https://github.com/btford/angular-socket-io-seed) demo by adding Docker support and a Fleet unit file.
 
-## Running it
-
-First, grab the dependencies with npm:
-
-    npm install
-
-Then run the app like so:
-
-    node app.js
-
+## Running locally
+```
+npm install
+node app.js
+```
 And navigate to `localhost:3000`
+
+## Running locally with Docker
+```
+docker build -t angular-websocket .
+docker run -p 3000:3000 -d angular-websocket
+```
+The app should now be running on `localhost:3000`, or if you are using boot2docker on port 3000 of your boot2docker IP address (run `echo $(boot2docker ip)` to find it).
+
+## Deploying to CoreOS
+```
+fleetctl start angular-websocket.service
+```
