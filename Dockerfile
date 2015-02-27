@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM phusion/baseimage
 
 MAINTAINER Matt Faulkner <matt.faulkner@qadium.com>
 MAINTAINER https://github.com/mfaulk/angular-websocket.git
